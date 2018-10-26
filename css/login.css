@@ -1,7 +1,8 @@
-/*给 body 添加样式*/
+/*全局变量*/
 :root {
     --color:rgb(0, 150, 136);
 }
+/*给 body 添加样式*/
 html {
     font-family: "Microsoft YaHei", å®‹ä½“, "Segoe UI", "Lucida Grande", Helvetica, Arial, sans-serif, FreeSans, Arimo;
     background-color: var(--color);
