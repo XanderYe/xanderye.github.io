@@ -1,0 +1,299 @@
+/*给 body 添加样式*/
+:root {
+    --color:rgb(0, 150, 136);
+}
+html {
+    font-family: "Microsoft YaHei", å®‹ä½“, "Segoe UI", "Lucida Grande", Helvetica, Arial, sans-serif, FreeSans, Arimo;
+    background-color: var(--color);
+    color: #777;
+}
+
+/*版心*/
+.container {
+    position: relative;
+    max-width: 360px;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 45px 20px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+/*头部logo*/
+.container > .logo {
+    height: 150px;
+    width: 150px;
+    position: relative;
+    background-color: #EFEFEF;
+    border-radius: 75px;
+    margin: 0 auto;
+}
+
+/*下面需要一个颜色更深的半圆*/
+.container > .logo::after {
+    content: ' ';
+    height: 150px;
+    width: 75px;
+    position: absolute;
+    background-color: #E1E1E1;
+    border-radius: 0 75px 75px 0;
+    left: 75px;
+    top: 0;
+}
+
+/*制作锁,分为两部分,lock-top 和 lock -bottom*/
+.container>.logo>.logo-block-top {
+    box-sizing: border-box;
+    height: 45px;
+    width: 54px;
+    border: 10px solid #F57C00;
+    border-bottom: 0;
+    position: absolute;
+    border-radius: 27px 27px 0 0;
+    left: 48px;
+    z-index: 1001;
+    top: 20px;
+}
+/*同样是设置圆角*/
+.container>.logo>.logo-block-bottom {
+    position: absolute;
+    height: 60px;
+    width: 80px;
+    box-sizing: border-box;
+    background-color: #FFA000;
+    z-index: 1001;
+    top: 65px;
+    left: 35px;
+    border-radius: 7px;
+}
+
+/*设置钥匙心,这个也分为两部分,上面的圆孔和和下面的椭圆
+刚好可以设置在 lock-bottom 的 before和after伪元素上面*/
+.container>.logo>.logo-block-bottom::before {
+    content: " ";
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    background-color: #EFEFEF;
+    border-radius: 5px;
+    top: 22px;
+    left: 34px;
+    box-sizing: border-box;
+}
+.container>.logo>.logo-block-bottom::after {
+    content: " ";
+    position: absolute;
+    height: 12px;
+    width: 6px;
+    background-color: #EFEFEF;
+    border-radius: 2px;
+    top: 30px;
+    left: 37px;
+    box-sizing: border-box;
+}
+
+/*下面是 ' 用户登录 ' 标题.
+注意,这里最好使用margin 而不是padding,不要破坏原有h4 标签.*/
+.container > .login-header {
+    text-align: center;
+    font-size: 23px;
+    color: var(--color);
+    font-weight: 400;
+    margin: 15px 0 18px 0;
+}
+
+.container > .login-header {
+    text-align: center;
+    font-size: 23px;
+    color: var(--color);
+    font-weight: 400;
+    margin: 15px 0 18px 0;
+}
+
+/*为内容添加一个容器*/
+.container > .content {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/*添加一个 form-group, 包含 label和input 标签, 设置相对布局*/
+.container > .content > .form-group {
+    position: relative;
+}
+
+/*下面就是核心部分, 为input设置样式(这里会产生一个bug, 在结尾会介绍)*/
+
+.container > .content > .form-group > .form-control {
+    z-index: 3;
+    position: relative;
+    height: 58px;
+    width: 100%;
+    border: 0px;
+    border-bottom: 1px solid #777;
+    padding-top: 22px;
+    color: var(--color);
+    font-size: 12px;
+    background: none;
+    box-sizing: border-box;
+    outline: none;
+    display: inline-block;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+/*labe 标签, 使用绝对定位, 将其放置到Input的上面.*/
+.container > .content > .form-group > .form-label {
+    z-index: 1;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    font-size: 15px;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+/*为两个form group 设置一定的间距, 否则下面会挡住上面设置的 box-shadow*/
+.container > .content > .form-group > :first-child {
+    margin-bottom: 5px;
+}
+
+/*添加动态效果*/
+.container > .content > .form-group > .form-control:focus,
+.container > .content > .form-group > .form-control:valid {
+    box-shadow: 0 1px var(--color);
+    border-color: var(--color);
+}
+
+.container > .content > .form-group > .form-control:focus + .form-label,
+.container > .content > .form-group > .form-control:valid + .form-label {
+    font-size: 12px;
+    -ms-transform: translateY(-20px);
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-25px);
+}
+
+/*下面就到了底部option, 也分为两部分, option-left 和 option-right*/
+.container > .content > .option {
+    width: 100%;
+    height: 14px;
+    margin-top: 24px;
+    font-size: 16px;
+}
+
+.container > .content > .option > .option-left {
+     width: 50%;
+     float: left;
+ }
+
+.container > .content > .option > .option-left > a,
+.container > .content > .option > .option-left > a:hover {
+    color: var(--color);
+    text-decoration: none;
+}
+
+/*在option-right 中, 要注意 这个复选框并不是原生的Input, 而是使用div 旋转而得, 因为原生的checkbox无法更改样式.*/
+/*.container > .content > .option > .option-right {
+    width: 50%;
+    float: right;
+    text-align: right;
+    position: relative;
+}
+
+.container > .content > .option > .option-right > .md-checkbox {
+    height: 18px;
+    width: 18px;
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    background-color: var(--color);
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    right: 68px;
+}
+
+.container > .content > .option > .option-right > .md-checkbox[checked]:after {
+    content: " ";
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    height: 8px;
+    width: 15px;
+    box-sizing: border-box;
+    position: absolute;
+    transform: rotate(-45deg);
+    top: 3px;
+    left: 2px;
+}*/
+
+.container > .content > .option > .option-right {
+    width: 50%;
+    float: right;
+    text-align: right;
+    position: relative;
+}
+
+.container > .content > .option > .option-right > a,
+.container > .content > .option > .option-right > a:hover {
+    color: var(--color);
+    text-decoration: none;
+}
+
+/*这里使用css3 中的旋转, 而模仿一个选中效果
+注意: 虽然div无法直接选中, 但还是可以为其添加一个checkd属性, 这个属性是一个特殊的css 事件效果, 可以通过js来控制.
+最后, 登录按钮.
+这里, 也必须使用绝对定位, 参照点是bottom和right*/
+.container > .login-button {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    border: 0px;
+    outline: 0px;
+    background-color: var(--color);
+    border-radius: 30px;
+    right: -30px;
+    bottom: 91px;
+    box-shadow: 2px 0 0 rgba(0, 0, 0, 0.3) inset;
+}
+
+/*
+通过 box-shadow: 2px 0 0 rgba(0, 0, 0, 0.3) inset; 这句话可以知道一个内嵌效果.
+                                                 中间的按钮在不适用字体图标的情况下也必须要用div 旋转来模仿了
+*/
+
+.container > .login-button > .icon-login {
+    box-sizing: border-box;
+    position: relative;
+    width: 18px;
+    height: 3px;
+    background-color: #fff;
+    transition: 0.3s;
+    display: block;
+    margin: auto;
+}
+
+.container > .login-button > .icon-login::after {
+    content: ' ';
+    box-sizing: border-box;
+    position: absolute;
+    left: 8px;
+    height: 12px;
+    width: 12px;
+    border-top: 3px solid #fff;
+    border-right: 3px solid #fff;
+    transform: rotate(45deg);
+    top: -4px;
+}
+
+/*最后是鼠标hover上的放大和阴影效果*/
+
+.container > .login-button:hover {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.3) inset, 0 3px 6px rgba(0, 0, 0, 0.16), 0 5px 11px rgba(0, 0, 0, 0.23)
+}
+
+.container > .login-button:hover > .icon-login {
+    -ms-transform: scale(1.2);
+= webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
