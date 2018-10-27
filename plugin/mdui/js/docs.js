@@ -29,6 +29,12 @@ $('.viewsource').on('click', function () {
     var DEFAULT_ACCENT = 'pink';
     var DEFAULT_LAYOUT = '';
 
+    //获取cookie
+    function getCookie(name) {
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        return (arr=document.cookie.match(reg))?unescape(arr[2]):null;
+    }
+
     // 设置 cookie
     var setCookie = function (key, value) {
         // cookie 有效期为 1 年
@@ -92,6 +98,18 @@ $('.viewsource').on('click', function () {
             $('input[name="doc-theme-layout"][value="' + theme.layout + '"]').prop('checked', true);
         }
     };
+
+   /* var primary=getCookie("doc-theme-primary");
+    var accent=getCookie("doc-theme-accent");
+    var layout=getCookie("doc-theme-layout");
+    console.log(primary!=null?primary:DEFAULT_PRIMARY);
+    console.log(accent!=null?accent:DEFAULT_ACCENT);
+    console.log(layout!=null?layout:DEFAULT_LAYOUT);
+    setDocsTheme({
+        primary: primary!=null?primary:DEFAULT_PRIMARY,
+        accent: accent!=null?accent:DEFAULT_ACCENT,
+        layout: layout!=null?layout:DEFAULT_LAYOUT
+    });*/
 
     // 切换主色
     $(document).on('change', 'input[name="doc-theme-primary"]', function () {

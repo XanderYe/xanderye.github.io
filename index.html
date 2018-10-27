@@ -8,9 +8,6 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <title>基于MDUI的首页</title>
     <link rel="stylesheet" href="plugin/mdui/css/mdui.min.css">
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="plugin/mdui/js/mdui.min.js"></script>
-    <script src="plugin/mdui/js/docs.js"></script>
 </head>
 <body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink mdui-loaded">
 <header class="mdui-appbar mdui-appbar-fixed">
@@ -30,7 +27,7 @@
     </div>
 </header>
 <!--导航栏-->
-<div class="mdui-drawer mdui-drawer-open" id="main-drawer">
+<div class="mdui-drawer" id="main-drawer">
     <div class="mdui-list" mdui-collapse="{accordion: true}" style="margin-bottom: 76px;">
         <div class="mdui-collapse-item ">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
@@ -67,7 +64,7 @@
         <div class="mdui-row-xs-1 mdui-row-sm-2 mdui-row-md-3">
             <div class="mdui-col">
                 <label class="mdui-radio mdui-m-b-1">
-                    <input type="radio" name="doc-theme-layout" value="" checked="">
+                    <input type="radio" name="doc-theme-layout" value="">
                     <i class="mdui-radio-icon"></i>
                     Light
                 </label>
@@ -148,7 +145,7 @@
             </div>
             <div class="mdui-col mdui-text-color-indigo">
                 <label class="mdui-radio mdui-m-b-1">
-                    <input type="radio" name="doc-theme-primary" value="indigo" checked="">
+                    <input type="radio" name="doc-theme-primary" value="indigo">
                     <i class="mdui-radio-icon"></i>
                     Indigo
                 </label>
@@ -299,7 +296,7 @@
             </div>
             <div class="mdui-col mdui-text-color-pink">
                 <label class="mdui-radio mdui-m-b-1">
-                    <input type="radio" name="doc-theme-accent" value="pink" checked="">
+                    <input type="radio" name="doc-theme-accent" value="pink">
                     <i class="mdui-radio-icon"></i>
                     Pink
                 </label>
@@ -341,6 +338,22 @@
         <button class="mdui-btn mdui-ripple" mdui-dialog-confirm="">ok</button>
     </div>
 </div>
+<script>
+    //获取cookie
+    function getCookie(name) {
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        return (arr=document.cookie.match(reg))?unescape(arr[2]):null;
+    }
+    var primary=getCookie("doc-theme-primary");
+    var accent=getCookie("doc-theme-accent");
+    var layout=getCookie("doc-theme-layout");
+    console.log(primary);
+    console.log(accent);
+    console.log(layout);
+</script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="plugin/mdui/js/mdui.min.js"></script>
+<script src="plugin/mdui/js/docs.js"></script>
 <script>var $$ = mdui.JQ;</script>
 </body>
 </html>
