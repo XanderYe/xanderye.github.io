@@ -8,9 +8,6 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <title>基于MDUI的首页</title>
     <link rel="stylesheet" href="plugin/mdui/css/mdui.min.css">
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="plugin/mdui/js/mdui.min.js"></script>
-    <script src="plugin/mdui/js/docs.js"></script>
 </head>
 <body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-loaded">
 <header class="mdui-appbar mdui-appbar-fixed">
@@ -341,28 +338,9 @@
         <button class="mdui-btn mdui-ripple" mdui-dialog-confirm="">ok</button>
     </div>
 </div>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="plugin/mdui/js/mdui.min.js"></script>
+<script src="plugin/mdui/js/docs.js"></script>
 <script>var $$ = mdui.JQ;</script>
-<script>
-    var getCookie = function (name) {
-        var arr;
-        var reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
-        if (arr = document.cookie.match(reg))
-            return unescape(arr[2]);
-        else
-            return null;
-    };
-    var primary=getCookie("docs-theme-primary");
-    var accent=getCookie("docs-theme-accent");
-    var layout=getCookie("docs-theme-layout");
-    console.log(primary);
-    console.log(accent);
-    console.log(layout);
-    primary=(primary!=""&&primary!=null)?primary:"indigo";
-    accent=(accent!=""&&accent!=null)?accent:"pink";
-    layout=(layout!=""&&layout!=null)?layout:"";
-    $('body').addClass('mdui-theme-primary-' + primary);
-    $('body').addClass('mdui-theme-accent-' + accent);
-    $('body').addClass('mdui-theme-layout-' + layout);
-</script>
 </body>
 </html>

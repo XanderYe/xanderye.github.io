@@ -30,16 +30,20 @@ $('.viewsource').on('click', function () {
     var DEFAULT_LAYOUT = '';
 
     //获取cookie
-    function getCookie(name) {
-        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-        return (arr=document.cookie.match(reg))?unescape(arr[2]):null;
-    }
+    var getCookie = function (name) {
+        var arr;
+        var reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        if (arr = document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    };
 
     // 设置 cookie
     var setCookie = function (key, value) {
         // cookie 有效期为 1 年
         var date = new Date();
-        date.setTime(date.getTime() + 365*24*3600*1000);
+        date.setTime(date.getTime() + 365 * 24 * 3600 * 1000);
         document.cookie = key + '=' + value + '; expires=' + date.toGMTString() + '; path=/';
     };
 
@@ -99,18 +103,6 @@ $('.viewsource').on('click', function () {
         }
     };
 
-   /* var primary=getCookie("doc-theme-primary");
-    var accent=getCookie("doc-theme-accent");
-    var layout=getCookie("doc-theme-layout");
-    console.log(primary!=null?primary:DEFAULT_PRIMARY);
-    console.log(accent!=null?accent:DEFAULT_ACCENT);
-    console.log(layout!=null?layout:DEFAULT_LAYOUT);
-    setDocsTheme({
-        primary: primary!=null?primary:DEFAULT_PRIMARY,
-        accent: accent!=null?accent:DEFAULT_ACCENT,
-        layout: layout!=null?layout:DEFAULT_LAYOUT
-    });*/
-
     // 切换主色
     $(document).on('change', 'input[name="doc-theme-primary"]', function () {
         setDocsTheme({
@@ -139,6 +131,14 @@ $('.viewsource').on('click', function () {
             accent: DEFAULT_ACCENT,
             layout: DEFAULT_LAYOUT
         });
+    });
+    var primary = getCookie("docs-theme-primary");
+    var accent = getCookie("docs-theme-accent");
+    var layout = getCookie("docs-theme-layout");
+    setDocsTheme({
+        primary: (primary != "" && primary != null) ? primary : DEFAULT_PRIMARY,
+        accent: (accent != "" && accent != null) ? accent : DEFAULT_ACCENT,
+        layout: (layout != "" && layout != null) ? layout : DEFAULT_LAYOUT
     });
 })();
 
