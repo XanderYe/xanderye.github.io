@@ -8,8 +8,12 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <title>基于MDUI的首页</title>
     <link rel="stylesheet" href="plugin/mdui/css/mdui.min.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="plugin/mdui/js/mdui.min.js"></script>
+    <script src="plugin/mdui/js/docs.js"></script>
 </head>
-<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-loaded mdui-theme-primary-indigo mdui-theme-accent-pink">
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-loaded">
+<!--header-->
 <header class="mdui-appbar mdui-appbar-fixed">
     <div class="mdui-toolbar mdui-color-theme">
         <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white"
@@ -23,11 +27,10 @@
         </span>
         <div class="mc-login-btn mdui-btn mdui-btn-dense mdui-ripple mdui-ripple-white">登录</div>
         <div class="mc-register-btn mdui-btn mdui-btn-dense mdui-ripple mdui-ripple-white">注册</div>
-
     </div>
 </header>
 <!--导航栏-->
-<div class="mdui-drawer" id="main-drawer">
+<div class="mdui-drawer mdui-drawer-open" id="main-drawer">
     <div class="mdui-list" mdui-collapse="{accordion: true}" style="margin-bottom: 76px;">
         <div class="mdui-collapse-item ">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
@@ -54,7 +57,120 @@
         </div>
     </div>
 </div>
-
+<!--body-->
+<div class="mdui-container doc-container doc-no-cover">
+    test
+</div>
+<!--login-->
+<div class="mc-login mdui-dialog">
+    <button class="mdui-btn mdui-btn-icon mdui-text-color-white close">
+        <i class="mdui-icon material-icons">close</i></button>
+    <div class="mdui-dialog-title mdui-color-indigo">登录</div>
+    <form id="loginForm">
+        <div class="mdui-textfield mdui-textfield-floating-label mdui-textfield-has-bottom">
+            <label class="mdui-textfield-label">用户名或邮箱</label>
+            <input class="mdui-textfield-input" name="name" type="text" required="">
+            <div class="mdui-textfield-error">账号不能为空</div>
+        </div>
+        <div class="mdui-textfield mdui-textfield-floating-label mdui-textfield-has-bottom">
+            <label class="mdui-textfield-label">密码</label>
+            <input class="mdui-textfield-input" name="password" type="password" required="">
+            <div class="mdui-textfield-error">密码不能为空</div>
+        </div>
+        <div class="actions mdui-clearfix">
+            <button class="mdui-btn mdui-ripple more-option" type="button"
+                    mdui-menu="{target: '#mc-login-menu', position: 'top', covered: true}">更多选项
+            </button>
+            <ul class="mdui-menu" id="mc-login-menu">
+                <li class="mdui-menu-item"><a class="mdui-ripple mc-password-reset-trigger">忘记密码</a></li>
+                <li class="mdui-menu-item"><a class="mdui-ripple mc-register-trigger">创建新账号</a></li>
+            </ul>
+            <button type="submit" class="mdui-btn mdui-btn-raised mdui-color-theme-accent mdui-float-right">登录</button>
+        </div>
+    </form>
+</div>
+<!--register-->
+<div class="mc-register mdui-dialog">
+    <button class="mdui-btn mdui-btn-icon mdui-text-color-white close">
+        <i class="mdui-icon material-icons">close</i>
+    </button>
+    <div class="mdui-dialog-title mdui-color-green mdui-text-color-white">创建新账号</div>
+    <form class="">
+        <div class="mdui-textfield mdui-textfield-floating-label mdui-textfield-has-bottom">
+            <label class="mdui-textfield-label">邮箱</label>
+            <input class="mdui-textfield-input" name="email" type="email" required="">
+            <div class="mdui-textfield-error">邮箱格式错误</div>
+        </div>
+        <div class="mdui-textfield mdui-textfield-floating-label mdui-textfield-has-bottom send-email-field">
+            <label class="mdui-textfield-label">邮件验证码</label>
+            <input class="mdui-textfield-input" name="email_code" type="text" required="">
+            <div class="mdui-textfield-error">验证码不能为空</div>
+            <button class="mdui-btn send-email" type="button">发送验证码</button>
+        </div>
+        <div class="actions">
+            <div class="mdui-btn mdui-ripple more-option mc-login-trigger">已有账号？</div>
+            <button type="submit" class="mdui-btn mdui-btn-raised mdui-color-theme-accent mdui-float-right">下一步</button>
+        </div>
+    </form>
+    <form class="mdui-hidden">
+        <div class="mdui-textfield mdui-textfield-floating-label mdui-textfield-has-bottom">
+            <label class="mdui-textfield-label">用户名</label>
+            <input class="mdui-textfield-input" name="username" type="text" required="">
+            <div class="mdui-textfield-error">用户名不能为空</div>
+        </div>
+        <div class="mdui-textfield mdui-textfield-floating-label mdui-textfield-has-bottom">
+            <label class="mdui-textfield-label">密码</label>
+            <input class="mdui-textfield-input" name="password" type="password" required="">
+            <div class="mdui-textfield-error">密码不能为空</div>
+        </div>
+        <div class="actions mdui-clearfix">
+            <button type="submit" class="mdui-btn mdui-btn-raised mdui-color-theme-accent mdui-float-right">注册</button>
+        </div>
+    </form>
+</div>
+<!--reset-->
+<div class="mc-reset mdui-dialog">
+    <button class="mdui-btn mdui-btn-icon mdui-text-color-white close">
+        <i class="mdui-icon material-icons">close</i>
+    </button>
+    <div class="mdui-dialog-title mdui-color-deep-orange mdui-text-color-white">重置密码</div>
+    <form class="" id="resetForm">
+        <div class="mdui-textfield mdui-textfield-floating-label mdui-textfield-has-bottom">
+            <label class="mdui-textfield-label">邮箱</label>
+            <input class="mdui-textfield-input" name="email" type="email" required="">
+            <div class="mdui-textfield-error">邮箱格式错误</div>
+        </div>
+        <div class="mdui-textfield mdui-textfield-floating-label mdui-textfield-has-bottom send-email-field">
+            <label class="mdui-textfield-label">邮件验证码</label>
+            <input class="mdui-textfield-input" name="email_code" type="text" required="">
+            <div class="mdui-textfield-error">验证码不能为空</div>
+            <button class="mdui-btn send-email" type="button">发送验证码</button>
+        </div>
+        <div class="actions">
+            <button type="button" class="mdui-btn mdui-ripple more-option" mdui-menu="{target: '#mc-password-reset-menu', position: 'top', covered: true}">更多选项</button>
+            <ul class="mdui-menu" id="mc-password-reset-menu">
+                <li class="mdui-menu-item"><a class="mdui-ripple mc-login-trigger">登录账号</a></li>
+                <li class="mdui-menu-item"><a class="mdui-ripple mc-register-trigger">创建新账号</a></li>
+            </ul>
+            <button type="submit" class="mdui-btn mdui-btn-raised mdui-color-theme-accent mdui-float-right">下一步</button>
+        </div>
+    </form>
+    <form class="mdui-hidden">
+        <div class="mdui-textfield mdui-textfield-floating-label mdui-textfield-has-bottom">
+            <label class="mdui-textfield-label">新密码</label>
+            <input class="mdui-textfield-input" name="password" type="password" required="">
+            <div class="mdui-textfield-error">密码不能为空</div>
+        </div>
+        <div class="mdui-textfield mdui-textfield-floating-label mdui-textfield-has-bottom">
+            <label class="mdui-textfield-label">重复新密码</label>
+            <input class="mdui-textfield-input" name="password_repeat" type="password" required="">
+            <div class="mdui-textfield-error">密码不能为空</div>
+        </div>
+        <div class="actions mdui-clearfix">
+            <button type="submit" class="mdui-btn mdui-btn-raised mdui-color-theme-accent mdui-float-right">提交</button>
+        </div>
+    </form>
+</div>
 <!--主题-->
 <div class="mdui-dialog" id="dialog-docs-theme" style="top: 27.203px; display: none; height: 217.594px;">
     <div class="mdui-dialog-title">设置文档主题</div>
@@ -64,7 +180,7 @@
         <div class="mdui-row-xs-1 mdui-row-sm-2 mdui-row-md-3">
             <div class="mdui-col">
                 <label class="mdui-radio mdui-m-b-1">
-                    <input type="radio" name="doc-theme-layout" value="">
+                    <input type="radio" name="doc-theme-layout" value="" checked="">
                     <i class="mdui-radio-icon"></i>
                     Light
                 </label>
@@ -145,7 +261,7 @@
             </div>
             <div class="mdui-col mdui-text-color-indigo">
                 <label class="mdui-radio mdui-m-b-1">
-                    <input type="radio" name="doc-theme-primary" value="indigo">
+                    <input type="radio" name="doc-theme-primary" value="indigo" checked="">
                     <i class="mdui-radio-icon"></i>
                     Indigo
                 </label>
@@ -296,7 +412,7 @@
             </div>
             <div class="mdui-col mdui-text-color-pink">
                 <label class="mdui-radio mdui-m-b-1">
-                    <input type="radio" name="doc-theme-accent" value="pink">
+                    <input type="radio" name="doc-theme-accent" value="pink" checked="">
                     <i class="mdui-radio-icon"></i>
                     Pink
                 </label>
@@ -338,9 +454,6 @@
         <button class="mdui-btn mdui-ripple" mdui-dialog-confirm="">ok</button>
     </div>
 </div>
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="plugin/mdui/js/mdui.min.js"></script>
-<script src="plugin/mdui/js/docs.js"></script>
 <script>var $$ = mdui.JQ;</script>
 </body>
 </html>
