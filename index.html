@@ -76,13 +76,26 @@
         $("body").on("click",".mc-login-btn",function () {
             location.href = "login.html";
         });
-        var token = localStorage.getItem("user-token");
+        var token = localStorage.getItem("User-Token");
         var buttons = " <div class=\"mc-login-btn mdui-btn mdui-btn-dense mdui-ripple mdui-ripple-white\">登录</div>\n" +
             "        <div class=\"mc-register-btn mdui-btn mdui-btn-dense mdui-ripple mdui-ripple-white\">注册</div>\n" +
             "    ";
         if (token == null || token == "") {
             $(".mdui-toolbar-spacer").after(buttons);
         } else {
+            $.ajax({
+                headers:{"Origin":"https://xanderye.github.io","User-Token":token},
+                url:"http://144.34.151.251:8080/logindemo/user/token/"+token,
+                type:"GET",
+                success:function (data) {
+                    if(data.code==0){
+                        $(".user").attr("title",data.data.username);
+                        $(".username").html(data.data.username);
+                    }else{
+                        mdui.alert(data.msg, '警告');
+                    }
+                },
+            })
             $(".mc-appbar-user").css("display","block");
         }
     })
