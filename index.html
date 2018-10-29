@@ -84,7 +84,7 @@
             $(".mdui-toolbar-spacer").after(buttons);
         } else {
             $.ajax({
-                headers:{"User-Token":token},
+                headers:{"X-User-Token":token},
                 url:"http://144.34.151.251:8080/logindemo/user/token/"+token,
                 type:"GET",
                 success:function (data) {
