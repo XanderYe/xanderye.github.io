@@ -1,8 +1,19 @@
 $(function () {
-    $(".mc-login-btn").click(function () {
-        $("body").addClass("mdui-locked");
-        $("body").css("width","1023.33px");
-        $(".mc-login").addClass("mdui-dialog-open");
-        $(".mc-login").css({display: "block", top: "27.203px", height: "217.594px"});
+    $(".login-button").click(function () {
+        var inputs=$("input");
+        var login=true;
+        $.each(inputs,function (index,input) {
+            if($(input).val()==""){
+                login=false;
+            }
+        });
+        if(login==false){
+            mdui.alert('各项不为空', '警告');
+        }else{
+            mdui.alert('登录成功', '恭喜',function () {
+                mdui.alert('点击了确认按钮');
+            });
+        }
+
     });
-})
+});

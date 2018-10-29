@@ -8,6 +8,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <title>基于MDUI的首页</title>
     <link rel="stylesheet" href="plugin/mdui/css/mdui.min.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-loaded mdui-theme-primary-teal mdui-theme-accent-teal">
 <!--header-->
@@ -18,8 +19,20 @@
         <a href="../" class="mdui-typo-headline mdui-hidden-xs">MDUI</a>
         <a href="./" class="mdui-typo-title">文档</a>
         <div class="mdui-toolbar-spacer"></div>
-        <div class="mc-login-btn mdui-btn mdui-btn-dense mdui-ripple mdui-ripple-white">登录</div>
-        <div class="mc-register-btn mdui-btn mdui-btn-dense mdui-ripple mdui-ripple-white">注册</div>
+        <div class="mc-appbar-user" style="display: none">
+            <div class="mdui-btn mdui-btn-icon mdui-btn-dense user" title="username" mdui-menu="{target: '#appbar-user-popover', covered: false}"><img src="https://www.mdui.org/upload/avatar/eb/c5/c1493743076382eafc13d4057dba916c_m.png" width="32" height="32"></div>
+            <div class="mdui-menu popover" id="appbar-user-popover" style="transform-origin: 100% 0px 0px; position: fixed;">
+                <div class="info">
+                    <div class="avatar">
+                        <img src="https://www.mdui.org/upload/avatar/eb/c5/c1493743076382eafc13d4057dba916c_l.png" width="96" height="96"></div>
+                    <div class="username">username</div>
+                    <button class="mdui-btn mdui-btn-dense mdui-btn-raised mdui-ripple mdui-color-blue mdui-text-color-white personal">个人资料</button>
+                </div>
+                <div class="bottom">
+                    <button class="mdui-btn mdui-btn-dense mdui-btn-raised mdui-ripple mdui-ripple-black mdui-color-white mdui-float-right">退出</button>
+                </div>
+            </div>
+        </div>
     </div>
 </header>
 <!--nav-->
@@ -59,9 +72,20 @@
 <script src="js/login.js"></script>
 <script>var $$ = mdui.JQ;</script>
 <script>
-    $(".mc-login-btn").click(function () {
-        location.href="login.html";
-    });
+    $(function(){
+        $(".mc-login-btn").click(function () {
+            location.href = "login.html";
+        });
+        var token = localStorage.getItem("user-token");
+        var buttons = " <div class=\"mc-login-btn mdui-btn mdui-btn-dense mdui-ripple mdui-ripple-white\">登录</div>\n" +
+            "        <div class=\"mc-register-btn mdui-btn mdui-btn-dense mdui-ripple mdui-ripple-white\">注册</div>\n" +
+            "    ";
+        if (token == null || token == "") {
+            $(".mdui-toolbar-spacer").after(buttons);
+        } else {
+            $(".mc-appbar-user").css("display","block");
+        }
+    })
 </script>
 </body>
 </html>
