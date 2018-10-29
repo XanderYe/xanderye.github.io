@@ -73,7 +73,7 @@
 <script>var $$ = mdui.JQ;</script>
 <script>
     $(function(){
-        $(".mc-login-btn").click(function () {
+        $("body").on("click",".mc-login-btn",function () {
             location.href = "login.html";
         });
         var token = localStorage.getItem("user-token");
