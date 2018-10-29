@@ -21,6 +21,8 @@ $(function () {
                             localStorage.setItem("User-Token",data.data.token);
                             location.href="/";
                         });
+                    }else{
+                        mdui.alert(data.msg, '警告');
                     }
                 }
             });
