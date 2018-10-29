@@ -1133,8 +1133,8 @@
   background-color: #d50000 !important;
 }
 .mdui-theme-accent-teal .mdui-color-theme-accent {
-  color: rgba(0, 0, 0, .87) !important;
-  background-color: #64ffda !important;
+  color: #fff !important;
+  background-color: #009688 !important;
 }
 .mdui-theme-accent-teal .mdui-color-theme-a100 {
   color: rgba(0, 0, 0, .87) !important;
