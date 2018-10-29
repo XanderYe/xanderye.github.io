@@ -11,7 +11,6 @@ $(function () {
             mdui.alert('各项不为空', '警告');
         }else{
             $.ajax({
-                headers:{"Origin":"https://xanderye.github.io"},
                 url:"http://144.34.151.251:8080/logindemo/user/login",
                 type:"POST",
                 data:$("#loginForm").serialize(),
