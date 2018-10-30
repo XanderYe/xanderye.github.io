@@ -16,17 +16,17 @@ $(function () {
                 data:$("#loginForm").serialize(),
                 success:function (data) {
                     if(data.code==0){
-                        mdui.alert('登录成功', '恭喜',function () {
+                        mdui.alert('登录成功！3秒后自动跳转', '恭喜',function () {
                             localStorage.setItem("User-Token",data.data.token);
-                            location.href="/";
                         });
+                        setTimeout(function () {
+                            location.href="index.html"
+                        },3000);
                     }else{
                         mdui.alert(data.msg, '警告');
                     }
                 }
             });
-
         }
-
     });
 });
