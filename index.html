@@ -100,10 +100,7 @@
         }
         $(".bottom button").click(function () {
             localStorage.removeItem("X-User-Token");
-            mdui.alert("注销成功！","恭喜");
-            setTimeout(function () {
-                location.reload();
-            },1500);
+            location.reload();
 
         })
     })

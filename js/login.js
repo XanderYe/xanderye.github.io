@@ -17,10 +17,7 @@ $(function () {
                 success:function (data) {
                     if(data.code==0){
                         localStorage.setItem("X-User-Token",data.data.token);
-                        mdui.alert('登录成功！', '恭喜');
-                        setTimeout(function () {
-                            location.href="index.html";
-                        },1500);
+                        location.href="index.html";
                     }else{
                         mdui.alert(data.msg, '警告');
                     }
