@@ -16,12 +16,11 @@ $(function () {
                 data:$("#loginForm").serialize(),
                 success:function (data) {
                     if(data.code==0){
-                        mdui.alert('登录成功！3秒后自动跳转', '恭喜',function () {
-                            localStorage.setItem("X-User-Token",data.data.token);
-                        });
+                        localStorage.setItem("X-User-Token",data.data.token);
+                        mdui.alert('登录成功！', '恭喜');
                         setTimeout(function () {
-                            location.href="index.html"
-                        },3000);
+                            location.href="index.html";
+                        },1500);
                     }else{
                         mdui.alert(data.msg, '警告');
                     }
