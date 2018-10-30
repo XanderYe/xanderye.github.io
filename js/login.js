@@ -17,7 +17,7 @@ $(function () {
                 success:function (data) {
                     if(data.code==0){
                         mdui.alert('登录成功！3秒后自动跳转', '恭喜',function () {
-                            localStorage.setItem("User-Token",data.data.token);
+                            localStorage.setItem("X-User-Token",data.data.token);
                         });
                         setTimeout(function () {
                             location.href="index.html"

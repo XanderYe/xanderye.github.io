@@ -76,7 +76,7 @@
         $("body").on("click",".mc-login-btn",function () {
             location.href = "login.html";
         });
-        var token = localStorage.getItem("User-Token");
+        var token = localStorage.getItem("X-User-Token");
         var buttons = " <div class=\"mc-login-btn mdui-btn mdui-btn-dense mdui-ripple mdui-ripple-white\">登录</div>\n" +
             "        <div class=\"mc-register-btn mdui-btn mdui-btn-dense mdui-ripple mdui-ripple-white\">注册</div>\n" +
             "    ";
@@ -98,6 +98,10 @@
             })
             $(".mc-appbar-user").css("display","block");
         }
+        $(".bottom button").click(function () {
+            localStorage.removeItem("X-User-Token");
+            window.location.reload();
+        })
     })
 </script>
 </body>
