@@ -1,0 +1,194 @@
+/* 应用栏中的用户图标 */
+/* 应用栏中的用户图标 */
+.mc-appbar-user {
+    display: block;
+}
+
+.mc-appbar-user .user {
+    -webkit-transition: -webkit-box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1);
+    transition: -webkit-box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1);
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1);
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), -webkit-box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1);
+}
+
+.mc-appbar-user .user:hover {
+    -webkit-box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+}
+
+.mc-appbar-user .user img {
+    border-radius: 50%;
+}
+
+.mc-appbar-user .popover {
+    width: 330px;
+    height: 192px;
+    padding: 0;
+}
+
+.mc-appbar-user .popover .info,
+.mc-appbar-user .popover .bottom {
+    position: absolute;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.mc-appbar-user .popover .info {
+    left: 0;
+    top: 0;
+    padding: 22px 20px;
+    height: 139px;
+}
+
+.mc-appbar-user .popover .bottom {
+    left: 0;
+    bottom: 0;
+    border-top: 1px solid #ccc;
+    border-color: rgba(0, 0, 0, 0.2);
+    background-color: #f5f5f5;
+    padding: 10px 20px;
+}
+
+.mc-appbar-user .popover .bottom button {
+    min-width: 46px;
+}
+
+.mc-appbar-user .popover .avatar {
+    position: relative;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    overflow: hidden;
+    float: left;
+}
+
+.mc-appbar-user .popover .avatar .mc-avatar-upload {
+    display: none;
+}
+
+.mc-appbar-user .popover .avatar:hover .mc-avatar-upload {
+    display: block;
+}
+
+.mc-appbar-user .popover .username,
+.mc-appbar-user .popover .email {
+    line-height: 20px;
+    margin-left: 112px;
+}
+
+.mc-appbar-user .popover .username {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.mc-appbar-user .popover .email {
+    font-size: 13px;
+    color: #666;
+}
+
+.mc-appbar-user .popover .personal {
+    margin-left: 16px;
+}
+
+/*头像*/
+.mc-avatar-upload,
+.mc-cover-upload {
+    overflow: hidden;
+    height: 48px;
+    width: 48px;
+}
+
+.mc-avatar-upload .upload-btn,
+.mc-cover-upload .upload-btn {
+    display: block;
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+    background-color: rgba(0, 0, 0, 0.26) !important;
+}
+
+.mc-avatar-upload .upload-btn i,
+.mc-cover-upload .upload-btn i {
+    color: #fff !important;
+    opacity: .9;
+}
+
+.mc-avatar-upload .upload-btn:hover,
+.mc-cover-upload .upload-btn:hover,
+.mc-avatar-upload .upload-btn:active,
+.mc-cover-upload .upload-btn:active {
+    background-color: rgba(0, 0, 0, 0.26) !important;
+}
+
+.mc-avatar-upload .upload-btn:hover i,
+.mc-cover-upload .upload-btn:hover i,
+.mc-avatar-upload .upload-btn:active i,
+.mc-cover-upload .upload-btn:active i {
+    opacity: 1;
+}
+
+.mc-avatar-upload .upload-btn + input[type="file"],
+.mc-cover-upload .upload-btn + input[type="file"] {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.mc-avatar-upload {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.mc-avatar-upload,
+.mc-cover-upload {
+    overflow: hidden;
+    height: 48px;
+    width: 48px;
+}
+
+.mc-avatar-upload .upload-btn,
+.mc-cover-upload .upload-btn {
+    display: block;
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+    background-color: rgba(0, 0, 0, 0.26) !important;
+}
+
+.mc-avatar-upload .upload-btn i,
+.mc-cover-upload .upload-btn i {
+    color: #fff !important;
+    opacity: .9;
+}
+
+.mc-avatar-upload .upload-btn:hover,
+.mc-cover-upload .upload-btn:hover,
+.mc-avatar-upload .upload-btn:active,
+.mc-cover-upload .upload-btn:active {
+    background-color: rgba(0, 0, 0, 0.26) !important;
+}
+
+.mc-avatar-upload .upload-btn:hover i,
+.mc-cover-upload .upload-btn:hover i,
+.mc-avatar-upload .upload-btn:active i,
+.mc-cover-upload .upload-btn:active i {
+    opacity: 1;
+}
+
+.mc-avatar-upload .upload-btn + input[type="file"],
+.mc-cover-upload .upload-btn + input[type="file"] {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+/*正文排版*/
+.title, .bar {
+    text-align: center;
+}
