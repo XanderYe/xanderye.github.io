@@ -10,7 +10,7 @@ $(function () {
     } else {
         $.ajax({
             headers: {"X-User-Token": token},
-            url: "http://144.34.151.251:8080/myblog/user/token/" + token,
+            url: "http://47.100.229.37:8080/myblog/user/token/" + token,
             type: "GET",
             success: function (data) {
                 if (data.code == 0) {

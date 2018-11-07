@@ -12,7 +12,7 @@ $(function () {
             }, {confirmText: "确定"});
         } else {
             $.ajax({
-                url: "http://144.34.151.251:8080/myblog/user/login",
+                url: "http://47.100.229.37:8080/myblog/user/login",
                 type: "POST",
                 data: $("#loginForm").serialize(),
                 success: function (data) {
